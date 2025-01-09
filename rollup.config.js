@@ -1,17 +1,15 @@
 // import resolve from 'rollup-plugin-node-resolve';
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
+import { defineConfig } from 'rollup';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
-const pkg = require('./package.json');
-
-export default {
+export default defineConfig({
   input: `src/index.ts`,
   output: [
     {
-      file: 'konva.js',
-      name: 'Konva',
-      format: 'umd',
-      sourcemap: false,
-      freeze: false,
+      dir: 'lib',
+      format: 'es',
+      sourcemap: true,
     },
     // { file: pkg.module, format: 'es', sourcemap: true }
   ],
@@ -21,18 +19,11 @@ export default {
     include: 'src/**',
   },
   plugins: [
+    nodeResolve(),
     // Allow json resolution
     // json(),
     // Compile TypeScript files
     typescript({
-      useTsconfigDeclarationDir: true,
-      abortOnError: false,
-      removeComments: false,
-      tsconfigOverride: {
-        compilerOptions: {
-          module: 'ES2020',
-        },
-      },
     }),
     // // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     // commonjs(),
@@ -44,4 +35,4 @@ export default {
     // Resolve source maps to the original source
     // sourceMaps()
   ],
-};
+});

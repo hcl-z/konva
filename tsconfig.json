@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
-    "module": "CommonJS",
+    "module": "ES2020",
     "target": "ES2018",
     // "sourceMap": true,
     "noEmitOnError": true,
-    "lib": ["ES2019", "dom"],
+    "lib": ["ES2020", "dom"],
     "moduleResolution": "node",
-    "declaration": true,
     "removeComments": false,
-
+    "declaration": true,
+    "declarationDir": "./lib/types",
     "strict": true,
     "noImplicitAny": false,
     "noImplicitThis": false,
@@ -18,7 +17,7 @@
     // probably we would never enable this one
     // because it's too strict, konva generates many functions on the runtime
     "strictPropertyInitialization": false,
-    
+    "types": ["./global.d.ts"]
   },
   "include": ["./src/**/*.ts"],
 }

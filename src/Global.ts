@@ -30,16 +30,16 @@ export const glob: any =
   typeof global !== 'undefined'
     ? global
     : typeof window !== 'undefined'
-    ? window
-    : typeof WorkerGlobalScope !== 'undefined'
-    ? self
-    : {};
+      ? window
+      : typeof WorkerGlobalScope !== 'undefined'
+        ? self
+        : {};
 
 export const Konva = {
   _global: glob,
   version: '@@version',
   isBrowser: detectBrowser(),
-  isUnminified: /param/.test(function (param: any) {}.toString()),
+  isUnminified: /param/.test(function (param: any) { }.toString()),
   dblClickWindow: 400,
   getAngle(angle: number) {
     return Konva.angleDeg ? angle * PI_OVER_180 : angle;
@@ -154,7 +154,7 @@ export const Konva = {
    * @memberof Konva
    */
   isDragging() {
-    return Konva['DD'].isDragging;
+    return Konva['DD']?.isDragging;
   },
   isTransforming() {
     return Konva['Transformer']?.isTransforming();
